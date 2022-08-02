@@ -26,6 +26,27 @@
   }
 
   .form {
-    margin: 4px auto;
+    width: 100%;
+    margin: 8px;
+    .fields {
+      display: flex;
+      justify-content: center;
+      input {
+        text-align: center;
+        margin: 0 4px;
+      }
+      button {
+        padding: 5px;
+        margin: 4px;
+        border-radius: 3px;
+        border: none;
+        background-color: #a39e92;
+        font-size: 18px;
+        &:hover {
+          cursor: pointer;
+          background-color: #ff4000;
+        }
+      }
+    }
   }
 }
