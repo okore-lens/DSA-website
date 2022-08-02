@@ -6,6 +6,7 @@ const Linear = (props) => {
   const [inputs, setInputs] = useState([]);
   const [search, setSearch] = useState(1);
   const [results, setResults] = useState("Search a number in an array");
+  const [clicked, setClicked] = useState(true);
 
   useEffect(() => {
     setInputs(props.array);
@@ -26,16 +27,42 @@ const Linear = (props) => {
 
   const searchHandler = (e) => {
     e.preventDefault();
+    setClicked(!clicked);
     let x = search;
     for (let i = 0; i < length; i++) {
       let el = +splited[i];
       if (x / el === 1) {
         same.push(i);
-        console.log(same);
         setResults(`${x} was found at indexes ${same}`);
       }
     }
   };
+
+  const codeSnippet = (
+    <div className="code-snippet">
+      <pre>
+        <h2>Linear Search</h2>
+        <code>
+          {`
+        const linearSearch = (arr,x)=>{
+        let length = arr.length;
+        let result = [];
+        for(let i =0;i<length;i++){
+            if(x/arr[i] === 1){
+                result.push(i)
+            }
+        }
+        console.log(x , 'found at indexes' ,result)
+        }
+        
+        linearSearch([2,3,4,3,5],3)
+
+        // Output 3 found at indexes [1,3]
+          `}
+        </code>
+      </pre>
+    </div>
+  );
 
   return (
     <div className="linear">
@@ -58,6 +85,7 @@ const Linear = (props) => {
         <div className="values">{inputs} </div>
         <div className="output">{results}</div>
       </div>
+      {!clicked && codeSnippet}
     </div>
   );
 };
