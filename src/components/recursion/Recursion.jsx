@@ -119,7 +119,6 @@ const Recursion = (props) => {
   const oddSnippet = (
     <pre>
       <h2>Collect Odd Numbers</h2>
-
       <code>
         {`
       function collectOddValues(arr){
@@ -141,7 +140,32 @@ const Recursion = (props) => {
         helper(arr)
     
         return result;
-    }
+      }
+      `}
+      </code>
+      <h3>
+        <strong>Or as a pure recursive function</strong>
+      </h3>
+      <code>
+        {`
+      function collectOddValues(arr){
+    
+        let result = [];
+
+        if(arr.length === 0){
+          return;
+        }
+
+        if(arr[0]%2 !== 0){
+          result.push(arr[0])
+        }
+
+        result = result.concat(collectOddValues(arr.slice(1)));
+    
+        return result;
+      }
+
+      collectOddValues([2,3,1,5,4,3])
       `}
       </code>
     </pre>
