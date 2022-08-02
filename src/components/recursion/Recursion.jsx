@@ -7,6 +7,7 @@ const Recursion = (props) => {
   const [output, setOutput] = useState();
   const [factorialClicked, setFactorialClicked] = useState(true);
   const [sumClicked, setSumClicked] = useState(true);
+  const [oddClicked, setOddClicked] = useState(true);
 
   const splited = results.toString().split(",");
 
@@ -40,6 +41,28 @@ const Recursion = (props) => {
     setOutput(product);
     factor--;
     if (factor > 0) factorialHandler();
+  };
+
+  /* Odd Numbers Collector */
+
+  let indexes = length;
+
+  let oddNumbers = [];
+
+  const oddHandler = () => {
+    setOddClicked(!oddClicked);
+    indexes--;
+    // console.log(indexes);
+    if (splited[indexes] % 2 !== 0) {
+      let oddNumber = splited[indexes];
+      oddNumbers.push(`${oddNumber} ,`);
+    }
+
+    if (indexes > 0) {
+      oddHandler();
+    }
+
+    setOutput(oddNumbers);
   };
 
   const factorSnippet = (
@@ -93,6 +116,37 @@ const Recursion = (props) => {
     </pre>
   );
 
+  const oddSnippet = (
+    <pre>
+      <h2>Collect Odd Numbers</h2>
+
+      <code>
+        {`
+      function collectOddValues(arr){
+    
+        let result = [];
+    
+        function helper(helperInput){
+            if(helperInput.length === 0) {
+                return;
+            }
+            
+            if(helperInput[0] % 2 !== 0){
+                result.push(helperInput[0])
+            }
+            
+            helper(helperInput.slice(1))
+        }
+        
+        helper(arr)
+    
+        return result;
+    }
+      `}
+      </code>
+    </pre>
+  );
+
   return (
     <div className="recursion">
       <h2>Recursion</h2>
@@ -106,6 +160,7 @@ const Recursion = (props) => {
       <div className="buttons">
         <button onClick={factorialHandler}>Factorial</button>
         <button onClick={sumHandler}>Sum</button>
+        <button onClick={oddHandler}>Collect Odd Values</button>
       </div>
       <div className="results">
         <div className="values">[ {results} ]</div>
@@ -114,6 +169,7 @@ const Recursion = (props) => {
       <div className="code-snippet">
         {!factorialClicked && factorSnippet}
         {!sumClicked && sumSnippet}
+        {!oddClicked && oddSnippet}
       </div>
     </div>
   );
