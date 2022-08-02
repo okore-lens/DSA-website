@@ -17,16 +17,15 @@ const Recursion = (props) => {
   /* Sum of Range of Numbers */
 
   let sum = 0;
-  const length = splited.length; // array length
-  let newLength = parseInt(length); // length as a number
+  let length = splited.length; // array length
 
   const sumHandler = () => {
     setSumClicked(!sumClicked);
-    sum += +splited[newLength - 1];
+    sum += +splited[length - 1];
 
-    newLength--;
+    length--;
     setOutput(sum);
-    if (newLength > 0) sumHandler();
+    if (length > 0) sumHandler();
   };
 
   /* Number Factorials */
@@ -36,7 +35,7 @@ const Recursion = (props) => {
 
   const factorialHandler = () => {
     setFactorialClicked(!factorialClicked);
-    if (newLength !== 1) return alert("Enter a single digit");
+    if (length !== 1) return alert("Enter a single digit");
     product = product * factor;
     setOutput(product);
     factor--;
@@ -96,15 +95,13 @@ const Recursion = (props) => {
 
   return (
     <div className="recursion">
-      <h4>Recursion</h4>
+      <h2>Recursion</h2>
       <p>
-        A process or function that calls itself
-        <br />
+        A process or function that calls itself.
+        <br /> <br />
         Invoking a function with different parameters until the base case is
         reached.Base case is the condition where the function stops calling
-        itself
-        <br />
-        Best Examples are sum of a range of numbers and factorials
+        itself. Best Examples are sum of a range of numbers and factorials
       </p>
       <div className="buttons">
         <button onClick={factorialHandler}>Factorial</button>
@@ -123,20 +120,3 @@ const Recursion = (props) => {
 };
 
 export default Recursion;
-
-{
-  /* <pre>
-  <code>
-    {`function recurse() {
-      if(condition) {
-           recurse();
-      }
-       else {
-          // stop calling recurse()
-      }
-  }
-
-  recurse();`}
-  </code>
-</pre> */
-}

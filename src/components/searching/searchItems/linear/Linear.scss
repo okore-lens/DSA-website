@@ -1,0 +1,31 @@
+.linear {
+  width: 80%;
+  margin: 10px auto;
+  .results {
+    width: 100%;
+    border: 4px solid #00fa2a;
+    border-radius: 8px;
+
+    .output {
+      margin: 5px auto;
+      background-color: #fff;
+      color: #000000;
+      border-radius: 4px;
+      text-align: center;
+      padding: 2px;
+      border: 1px solid;
+      min-width: 100px;
+      height: 20px;
+      width: max-content;
+    }
+    .values {
+      margin: 5px auto;
+      width: max-content;
+      padding: 3px;
+    }
+  }
+
+  .form {
+    margin: 4px auto;
+  }
+}

@@ -1,7 +1,14 @@
 import { useState } from "react";
 import Recursion from "./components/recursion/Recursion";
+import { Link, Routes, Route } from "react-router-dom";
 
 import "./App.scss";
+import Sorting from "./components/sorting/Sorting";
+import Searching from "./components/searching/Searching";
+
+import Binary from "./components/searching/searchItems/binary/Binary";
+import Linear from "./components/searching/searchItems/linear/Linear";
+import Native from "./components/searching/searchItems/native/Native";
 
 function App() {
   const [inputs, setInputs] = useState([]);
@@ -15,17 +22,33 @@ function App() {
   // console.log(inputs);
   return (
     <div className="app">
-      DSA
+      <h1>DSA</h1>
       <form>
-        <p>Enter the values below, separate by use of a comma</p>
+        <p>
+          Enter the values below, separate by use of a comma ,
+          <strong>DO NOT END</strong> with a comma
+        </p>
         <input
           value={inputs}
           onChange={changeHandler}
           placeholder="Array Values"
         />
       </form>
+      <nav className="navigation">
+        <Link to="recursion">Recursion</Link>
+        <Link to="searching">Searching</Link>
+        <Link to="sorting">Sorting</Link>
+      </nav>
       <div className="outputs">
-        <Recursion array={inputs} />
+        <Routes>
+          <Route path="recursion" element={<Recursion array={inputs} />} />
+          <Route path="searching" element={<Searching array={inputs} />}>
+            <Route path="linear" element={<Linear array={inputs} />} />
+            <Route path="binary" element={<Binary />} />
+            <Route path="native" element={<Native />} />
+          </Route>
+          <Route path="sorting" element={<Sorting array={inputs} />} />
+        </Routes>
       </div>
     </div>
   );
