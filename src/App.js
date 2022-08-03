@@ -15,11 +15,8 @@ function App() {
 
   const changeHandler = (event) => {
     const currentValues = event.target.value;
-    // if (isNaN(currentValues) || ",")
-    // alert("Enter number digits");
     return setInputs(currentValues);
   };
-  // console.log(inputs);
   return (
     <div className="app">
       <h1>DSA</h1>

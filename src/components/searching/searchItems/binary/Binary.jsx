@@ -22,53 +22,32 @@ const Binary = (props) => {
     setSearch(digit);
   };
 
-  // let indexFound;
-  // let newArray;
-
-  // const binarySearch = (arr, x) => {
-  //   const length = arr.length;
-  //   const mid = Math.round(length / 2) - 1;
-  //   if (x / arr[mid] === 1) {
-  //     indexFound = mid;
-  //     setResults(`${search} was found in the array`);
-  //     return;
-  //   }
-  //   for (let i = 0; i < mid; i++) {
-  //     /* Greater than the midPoint */
-  //     if (x > arr[mid]) {
-  //       newArray = arr.splice(-mid);
-  //       binarySearch(newArray, x);
-  //       return;
-  //     }
-  //     {
-  //       /* Less than the midPoint */
-  //       newArray = arr.splice(0, mid);
-  //       binarySearch(newArray, x);
-  //       return;
-  //     }
-  //   }
-
-  //   return alert("Not found in the array");
-  // };
+  let indexFound;
+  let newArray;
 
   const binarySearch = (arr, x) => {
-    let start = 0;
-    let end = arr.length - 1;
-    let mid = Math.round((end + start) / 2);
-
-    while (arr[mid] !== x && start <= end) {
-      if (x < arr[mid]) {
-        end = mid - 1;
-      } else {
-        start = mid + 1;
-      }
-      mid = Math.round((end + start) / 2);
-    }
-
-    if (arr[mid] === x) {
-      setResults(`${x} was found in the array`);
+    const length = arr.length;
+    const mid = Math.round(length / 2) - 1;
+    if (x / arr[mid] === 1) {
+      indexFound = mid;
+      setResults(`${search} was found in the array`);
       return;
     }
+    for (let i = 0; i < mid; i++) {
+      /* Greater than the midPoint */
+      if (x > arr[mid]) {
+        newArray = arr.splice(-mid);
+        binarySearch(newArray, x);
+        return;
+      }
+      {
+        /* Less than the midPoint */
+        newArray = arr.splice(0, mid);
+        binarySearch(newArray, x);
+        return;
+      }
+    }
+
     return alert("Not found in the array");
   };
 
@@ -117,13 +96,17 @@ const Binary = (props) => {
           let end = arr.length - 1;
           let mid = Math.round((end+start)/2)
           
-          while(arr[mid] !== x){
+          while(arr[mid] !== x && start <= end){
             if(x < arr[mid]){
               end  = mid - 1
             } else {
               start = mid + 1
             }
             mid = Math.round((end+start)/2); 
+          }
+
+          if(arr[mid] === x){
+            console.log(x ,"found at index", mid)
           }
         }
 

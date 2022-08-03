@@ -16,8 +16,6 @@ const Linear = (props) => {
 
   let length = splited.length;
 
-  //   console.log(length);
-
   const formHandler = (event) => {
     const value = event.target.value;
     setSearch(value);
@@ -29,7 +27,6 @@ const Linear = (props) => {
     let i;
     for (i = 0; i < length; i++) {
       let el = arr[i];
-      console.log(el);
       if (x / el === 1) {
         same.push(i);
         return;
