@@ -8,7 +8,7 @@ import Searching from "./components/searching/Searching";
 
 import Binary from "./components/searching/searchItems/binary/Binary";
 import Linear from "./components/searching/searchItems/linear/Linear";
-import Native from "./components/searching/searchItems/native/Native";
+import Naive from "./components/searching/searchItems/naive/Naive";
 
 function App() {
   const [inputs, setInputs] = useState([]);
@@ -44,8 +44,8 @@ function App() {
           <Route path="recursion" element={<Recursion array={inputs} />} />
           <Route path="searching" element={<Searching array={inputs} />}>
             <Route path="linear" element={<Linear array={inputs} />} />
-            <Route path="binary" element={<Binary />} />
-            <Route path="native" element={<Native />} />
+            <Route path="binary" element={<Binary array={inputs} />} />
+            <Route path="naive" element={<Naive array={inputs} />} />
           </Route>
           <Route path="sorting" element={<Sorting array={inputs} />} />
         </Routes>

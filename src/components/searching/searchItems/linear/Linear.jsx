@@ -25,17 +25,24 @@ const Linear = (props) => {
 
   let same = [];
 
+  const linearSearch = (arr, x) => {
+    let i;
+    for (i = 0; i < length; i++) {
+      let el = arr[i];
+      console.log(el);
+      if (x / el === 1) {
+        same.push(i);
+        return;
+      }
+    }
+    return alert("Not found in the array");
+  };
+
   const searchHandler = (e) => {
     e.preventDefault();
     setClicked(!clicked);
-    let x = search;
-    for (let i = 0; i < length; i++) {
-      let el = +splited[i];
-      if (x / el === 1) {
-        same.push(i);
-        setResults(`${x} was found at indexes ${same}`);
-      }
-    }
+    linearSearch(splited, search);
+    setResults(`${search} was found at indexes ${same}`);
   };
 
   const codeSnippet = (
@@ -44,16 +51,20 @@ const Linear = (props) => {
         <h2>Linear Search</h2>
         <code>
           {`
-        const linearSearch = (arr,x)=>{
-        let length = arr.length;
-        let result = [];
-        for(let i =0;i<length;i++){
-            if(x/arr[i] === 1){
-                result.push(i)
+        let same = [];
+
+        const linearSearch = (arr, x) => {
+          let i;
+          for (i = 0; i < length; i++) {
+            let el = arr[i];
+            console.log(el);
+            if (x / el === 1) {
+              same.push(i);
+              return
             }
-        }
-        console.log(x , 'found at indexes' ,result)
-        }
+          }
+          console.log(x , 'found at indexes' ,result)
+        };
         
         linearSearch([2,3,4,3,5],3)
 
@@ -69,8 +80,26 @@ const Linear = (props) => {
       <h3>Linear Search</h3>
       <p>
         We start from the beginning of the array and compare all elements with
-        our desired value X untill we find a match and stop there.
+        our desired value X untill we find a match and stop there.Returns the
+        first match in the array <br />
+        <br />
+        Has a time complexity of O(n) on avarage and worst case scenarios. Best
+        case scenario is O(1).
+        <br /> <br />
+        In Javascript array functions, indexOf, includes, find, findIndex all
+        perform a linear search
       </p>
+      <div className="pseudocode">
+        <h2>Pseudocode</h2>
+        <ul>
+          <li>A function that accepts an array and a value</li>
+          <li>
+            Loop through the array checking if the current array element is
+            equal to the value
+          </li>
+          <li>Return its index if the elements is found</li>
+        </ul>
+      </div>
       <form className="form">
         <div className="fields">
           <input

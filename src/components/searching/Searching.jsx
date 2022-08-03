@@ -10,7 +10,7 @@ const Searching = () => {
       <nav className="navigation">
         <Link to="linear">Linear Search</Link>
         <Link to="binary">Binary Search</Link>
-        <Link to="native">Native String Search</Link>
+        <Link to="naive">Naive String Search</Link>
       </nav>
       <div className="types">
         <Outlet />

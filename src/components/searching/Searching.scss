@@ -1,5 +1,4 @@
 .searching {
-  width: 100%;
   text-align: start;
   .navigation {
     // background-color: rgb(255, 255, 255);
@@ -19,5 +18,9 @@
         background-color: #d67b25;
       }
     }
+  }
+  .types {
+    width: 80%;
+    margin: 10px auto;
   }
 }
