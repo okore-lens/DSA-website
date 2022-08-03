@@ -66,10 +66,11 @@ const Recursion = (props) => {
   };
 
   const factorSnippet = (
-    <pre>
-      <h2>Factorization code Snippet</h2>
-      <code>
-        {`
+    <div className="code-snippet">
+      <pre>
+        <h2>Factorization code Snippet</h2>
+        <code>
+          {`
         let factor = 1;
 
         function factorial(x){
@@ -85,15 +86,17 @@ const Recursion = (props) => {
         factorial(4) // returns 24
         // output to the console (4,4) (12,3) (24,2) (24,1 )
        `}
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   );
 
   const sumSnippet = (
-    <pre>
-      <h2>Sum code Snippet</h2>
-      <code>
-        {`
+    <div className="code-snippet">
+      <pre>
+        <h2>Sum code Snippet</h2>
+        <code>
+          {`
         let array = [4,3,5,6];
         let sum = 0;
         let length = array.length;
@@ -112,15 +115,17 @@ const Recursion = (props) => {
 
         sumHandler();
             `}
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   );
 
   const oddSnippet = (
-    <pre>
-      <h2>Collect Odd Numbers</h2>
-      <code>
-        {`
+    <div className="code-snippet">
+      <pre>
+        <h2>Collect Odd Numbers</h2>
+        <code>
+          {`
       function collectOddValues(arr){
     
         let result = [];
@@ -142,12 +147,12 @@ const Recursion = (props) => {
         return result;
       }
       `}
-      </code>
-      <h3>
-        <strong>Or as a pure recursive function</strong>
-      </h3>
-      <code>
-        {`
+        </code>
+        <h3>
+          <strong>Or as a pure recursive function</strong>
+        </h3>
+        <code>
+          {`
       function collectOddValues(arr){
     
         let result = [];
@@ -167,8 +172,9 @@ const Recursion = (props) => {
 
       collectOddValues([2,3,1,5,4,3])
       `}
-      </code>
-    </pre>
+        </code>
+      </pre>
+    </div>
   );
 
   return (
@@ -190,11 +196,10 @@ const Recursion = (props) => {
         <div className="values">[ {results} ]</div>
         <div className="output">{output}</div>
       </div>
-      <div className="code-snippet">
-        {!factorialClicked && factorSnippet}
-        {!sumClicked && sumSnippet}
-        {!oddClicked && oddSnippet}
-      </div>
+
+      {!factorialClicked && factorSnippet}
+      {!sumClicked && sumSnippet}
+      {!oddClicked && oddSnippet}
     </div>
   );
 };

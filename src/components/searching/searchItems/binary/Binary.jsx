@@ -63,8 +63,9 @@ const Binary = (props) => {
         <h2>Binary Search</h2>
         <code>
           {`
-
         // Recursion
+
+        /* Method 1 */
 
         let indexFound;
         let newArray;
@@ -91,6 +92,8 @@ const Binary = (props) => {
           }
         };
 
+        /* Method 2 */
+
         const binarySearch = (arr,x)=>{
           let start = 0;
           let end = arr.length - 1;
@@ -109,6 +112,8 @@ const Binary = (props) => {
             console.log(x ,"found at index", mid)
           }
         }
+
+        
 
         //Iteration
 
