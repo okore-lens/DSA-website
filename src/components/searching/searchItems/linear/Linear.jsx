@@ -12,9 +12,10 @@ const Linear = (props) => {
     setInputs(props.array);
   }, [props]);
 
-  const splited = inputs.toString().trim().split(",");
+  const splited = inputs.toString().split(",");
+  const numbers = splited.map(Number);
 
-  let length = splited.length;
+  let length = numbers.length;
 
   const formHandler = (event) => {
     const value = event.target.value;

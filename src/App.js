@@ -4,11 +4,16 @@ import { Link, Routes, Route } from "react-router-dom";
 
 import "./App.scss";
 import Sorting from "./components/sorting/Sorting";
-import Searching from "./components/searching/Searching";
 
 import Binary from "./components/searching/searchItems/binary/Binary";
 import Linear from "./components/searching/searchItems/linear/Linear";
 import Naive from "./components/searching/searchItems/naive/Naive";
+
+import Searching from "./components/searching/Searching";
+
+import Bubble from "./components/sorting/sortItems/bubble/Bubble";
+import Selection from "./components/sorting/sortItems/selection/Selection";
+import Insertion from "./components/sorting/sortItems/insertion/Insertion";
 
 function App() {
   const [inputs, setInputs] = useState([]);
@@ -39,12 +44,16 @@ function App() {
       <div className="outputs">
         <Routes>
           <Route path="recursion" element={<Recursion array={inputs} />} />
-          <Route path="searching" element={<Searching array={inputs} />}>
+          <Route path="searching" element={<Searching />}>
             <Route path="linear" element={<Linear array={inputs} />} />
             <Route path="binary" element={<Binary array={inputs} />} />
             <Route path="naive" element={<Naive array={inputs} />} />
           </Route>
-          <Route path="sorting" element={<Sorting array={inputs} />} />
+          <Route path="sorting" element={<Sorting />}>
+            <Route path="bubble" element={<Bubble array={inputs} />} />
+            <Route path="selection" element={<Selection array={inputs} />} />
+            <Route path="insertion" element={<Insertion array={inputs} />} />
+          </Route>
         </Routes>
       </div>
     </div>
