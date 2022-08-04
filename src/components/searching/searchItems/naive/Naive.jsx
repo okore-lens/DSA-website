@@ -6,7 +6,7 @@ const Native = (props) => {
   const [inputs, setInputs] = useState([]);
   const [results, setResults] = useState();
   const [search, setSearch] = useState([]);
-  const [clicked, setClicked] = useState();
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     setInputs(props.array);
@@ -37,7 +37,7 @@ const Native = (props) => {
 
   const searchHandler = (ev) => {
     ev.preventDefault();
-    setClicked(!clicked);
+    setClicked(true);
     naiveSearch(inputs, search);
     setResults("Found at index " + indeces);
   };
@@ -101,7 +101,7 @@ const Native = (props) => {
         <div className="values">{inputs} </div>
         <div className="output">{results}</div>
       </div>
-      {!clicked && codeSnippet}
+      {clicked && codeSnippet}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Binary = (props) => {
   const [inputs, setInputs] = useState([]);
   const [results, setResults] = useState();
   const [search, setSearch] = useState(0);
-  const [clicked, setClicked] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     setInputs(props.array);
@@ -23,38 +23,31 @@ const Binary = (props) => {
   };
 
   let indexFound;
-  let newArray;
 
   const binarySearch = (arr, x) => {
-    const length = arr.length;
-    const mid = Math.round(length / 2) - 1;
-    if (x / arr[mid] === 1) {
-      indexFound = mid;
-      setResults(`${search} was found in the array`);
-      return;
-    }
-    for (let i = 0; i < mid; i++) {
-      /* Greater than the midPoint */
-      if (x > arr[mid]) {
-        newArray = arr.splice(-mid);
-        binarySearch(newArray, x);
-        return;
+    let start = 0;
+    let end = arr.length - 1;
+    let mid = Math.round((end + start) / 2);
+
+    while (arr[mid] / x !== 1 && start <= end && start >= 0) {
+      if (x < arr[mid]) {
+        end = mid - 1;
+      } else {
+        start = mid + 1;
       }
-      {
-        /* Less than the midPoint */
-        newArray = arr.splice(0, mid);
-        binarySearch(newArray, x);
-        return;
-      }
+      mid = Math.round((end + start) / 2);
     }
 
-    return alert("Not found in the array");
+    if (x / arr[mid] === 1) {
+      indexFound = mid;
+    }
   };
 
   const searchHandler = (ev) => {
     ev.preventDefault();
-    setClicked(!clicked);
+    setClicked(true);
     binarySearch(sort, search);
+    setResults(`${search} was found at index ${indexFound}`);
   };
 
   const codeSnippet = (
@@ -63,10 +56,7 @@ const Binary = (props) => {
         <h2>Binary Search</h2>
         <code>
           {`
-        // Recursion
-
-        /* Method 1 */
-
+        // Recursion -->Does not return the index
         let indexFound;
         let newArray;
         
@@ -92,14 +82,17 @@ const Binary = (props) => {
           }
         };
 
-        /* Method 2 */
+        //Iteration
+
+        /* Method 1 */ --> Returns index of the first appearance
+        let indexFound;
 
         const binarySearch = (arr,x)=>{
           let start = 0;
           let end = arr.length - 1;
           let mid = Math.round((end+start)/2)
           
-          while(arr[mid] !== x && start <= end){
+          while(arr[mid] !== x && start <= end && start >= 0){
             if(x < arr[mid]){
               end  = mid - 1
             } else {
@@ -109,13 +102,12 @@ const Binary = (props) => {
           }
 
           if(arr[mid] === x){
-            console.log(x ,"found at index", mid)
+            indexFound = mid;
           }
         }
-
         
-
-        //Iteration
+        /* Method 2 */ --> Returns the index
+        let indexFound;
 
         const binarySearch = (arr, x) => {
           let l = 0;
@@ -197,7 +189,7 @@ const Binary = (props) => {
         <div className="values">{inputs} </div>
         <div className="output">{results}</div>
       </div>
-      {!clicked && codeSnippet}
+      {clicked && codeSnippet}
     </div>
   );
 };

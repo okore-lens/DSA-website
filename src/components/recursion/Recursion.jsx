@@ -5,9 +5,9 @@ import "./Recursion.scss";
 const Recursion = (props) => {
   const [results, setResults] = useState([]);
   const [output, setOutput] = useState();
-  const [factorialClicked, setFactorialClicked] = useState(true);
-  const [sumClicked, setSumClicked] = useState(true);
-  const [oddClicked, setOddClicked] = useState(true);
+  const [factorialClicked, setFactorialClicked] = useState(false);
+  const [sumClicked, setSumClicked] = useState(false);
+  const [oddClicked, setOddClicked] = useState(false);
 
   const splited = results.toString().split(",");
 
@@ -21,7 +21,10 @@ const Recursion = (props) => {
   let length = splited.length; // array length
 
   const sumHandler = () => {
-    setSumClicked(!sumClicked);
+    setSumClicked(true);
+    setFactorialClicked(false);
+    setOddClicked(false);
+
     sum += +splited[length - 1];
 
     length--;
@@ -35,7 +38,9 @@ const Recursion = (props) => {
   let product = 1;
 
   const factorialHandler = () => {
-    setFactorialClicked(!factorialClicked);
+    setSumClicked(false);
+    setFactorialClicked(true);
+    setOddClicked(false);
     if (length !== 1) return alert("Enter a single digit");
     product = product * factor;
     setOutput(product);
@@ -50,7 +55,9 @@ const Recursion = (props) => {
   let oddNumbers = [];
 
   const oddHandler = () => {
-    setOddClicked(!oddClicked);
+    setSumClicked(false);
+    setFactorialClicked(false);
+    setOddClicked(true);
     indexes--;
     // console.log(indexes);
     if (splited[indexes] % 2 !== 0) {
@@ -197,9 +204,9 @@ const Recursion = (props) => {
         <div className="output">{output}</div>
       </div>
 
-      {!factorialClicked && factorSnippet}
-      {!sumClicked && sumSnippet}
-      {!oddClicked && oddSnippet}
+      {factorialClicked && factorSnippet}
+      {sumClicked && sumSnippet}
+      {oddClicked && oddSnippet}
     </div>
   );
 };
