@@ -157,7 +157,7 @@ const Binary = (props) => {
         sorted and reduce the time complexity to O(Log n).
       </p>
       <div className="pseudocode">
-        <h2>Pseudocode</h2>
+        <h2>Algorithm</h2>
         <ul>
           <li>A function that accepts a sorted array and a value</li>
           <li>If the value is the same as the middle array element return.</li>

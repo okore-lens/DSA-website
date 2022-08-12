@@ -11,20 +11,74 @@ const Selection = (props) => {
     setInputs(props.array);
   }, [props]);
 
-  const sortHandler = () => {
-    setClicked(true);
+  const splited = inputs.toString().split(",");
+  const numbers = splited.map(Number);
+
+  const swap = (arr, x, y) => {
+    let temp = arr[x];
+    arr[x] = arr[y];
+    arr[y] = temp;
   };
 
-  const codeSnippet = <div className="code-snippet">Codesnippet</div>;
+  const selectionSort = (arr) => {
+    let n = arr.length;
+    let i, j, min_idx;
+    for (i = 0; i < n - 1; i++) {
+      min_idx = i;
+      for (j = i + 1; j < n; j++) {
+        if (arr[j] > arr[i]) {
+          min_idx = j;
+        }
+      }
+      if (min_idx !== i) {
+        swap(arr, min_idx, i);
+      }
+    }
+
+    setResults(arr + "");
+  };
+
+  const sortHandler = () => {
+    setClicked(true);
+    selectionSort(numbers);
+  };
+
+  const codeSnippet = (
+    <div className="code-snippet">
+      <pre>
+        <code>
+          {`
+          const swap = (arr,x,y)=>{
+            let swap = arr[x];
+            arr[x]=arr[y];
+            arr[y]=swap;
+          }
+
+          const selectionSort = (arr) => {
+          let n = arr.length;
+          let i, j, min_idx;
+            for (i = 0; i < n - 1; i++) {
+              min_idx = i;
+              for (j = i + 1; j < n; j++) {
+                if (arr[j] > arr[i]) {
+                  min_idx = j;
+                }
+              }
+              if (min_idx !== i) {
+                swap(arr, min_idx, i);
+              }
+            }
+          };`}
+        </code>
+      </pre>
+    </div>
+  );
 
   return (
     <div className="selection">
       <h3>Selelction Sort</h3>
       <p>
-        Bubble Sort is one of the simplest sorting algorithm. It works by
-        repeatedly swapping adjacent elements if they are in the wrong order.
-        This algorithm is not suitable for large data sets as its average and
-        worst-case time complexity is quite high.
+        Selection sort
         <br /> <br />
         Its time complexity is on avarage and worst case scenario O(n^2) even
         when the array is already sorted. Worst case scenario occurs when the
@@ -35,7 +89,7 @@ const Selection = (props) => {
         did not cause any swap.
       </p>
       <div className="pseudocode">
-        <h2>Pseudocode</h2>
+        <h2>Algorithm</h2>
         <ul>
           <li>Pseudocode</li>
         </ul>

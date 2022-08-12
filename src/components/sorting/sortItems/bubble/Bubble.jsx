@@ -24,19 +24,21 @@ const Bubble = (props) => {
 
   const bubbleSort = (arr) => {
     // let swapped;
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = arr.length; i > 0; i--) {
       //   swapped = false;
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[i] > arr[j]) {
-          //   console.log(swapped);
-          swap(arr, i, j);
+      let j;
+      for (j = 0; j < i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+          swap(arr, j, j + 1);
 
           //   if (swapped === false) {
           //     console.log("We have broken");
           //     break;
           //   }
         }
+        console.log(arr, arr[j], arr[j + 1]);
       }
+      console.log(arr, arr[j], arr[j + 1]);
     }
     setResults(arr + "");
   };
@@ -52,17 +54,22 @@ const Bubble = (props) => {
         <h2>Bubble Sort</h2>
         <code>
           {`
-        const swap = (arr, x, y) => {
+          const swap = (arr, x, y) => {
             let swap = arr[x];
             arr[x] = arr[y];
             arr[y] = swap;
           };
+
+          //ES2015
+          const swap =(arr,x,y)=>{
+            [arr[x],arr[y]] = [arr[y],arr[x]];
+          }
         
           const bubbleSort = (arr) => {
-            for (let i = 0; i < arr.length; i++) {
-              for (let j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                  swap(arr, i, j);
+            for (let i = 0; i < arr.length-1; i++) {
+              for (let j = 0; j < arr.length; j++) {
+                if (arr[j] > arr[j+1]) {
+                  swap(arr, j, j+1);
                 }
               }
             }
@@ -92,9 +99,19 @@ const Bubble = (props) => {
         did not cause any swap.
       </p>
       <div className="pseudocode">
-        <h2>Pseudocode</h2>
+        <h2>Algorithm</h2>
         <ul>
-          <li>Pseudocode</li>
+          <li>Define a function taking an array as a parameter</li>
+          <li>
+            Loop through the array in the function from the start to the end
+            with a variable i
+          </li>
+          <li>
+            Take a nested loop and loop through the arrays from the beginning
+            until its variable j is less than i-1
+          </li>
+          <li>If arr[i] &gt; arr[j], swap them</li>
+          <li>Return sorted array</li>
         </ul>
       </div>
 

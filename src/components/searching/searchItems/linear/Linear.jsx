@@ -88,7 +88,7 @@ const Linear = (props) => {
         perform a linear search
       </p>
       <div className="pseudocode">
-        <h2>Pseudocode</h2>
+        <h2>Algorithm</h2>
         <ul>
           <li>A function that accepts an array and a value</li>
           <li>
