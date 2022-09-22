@@ -46,8 +46,13 @@ const Binary = (props) => {
   const searchHandler = (ev) => {
     ev.preventDefault();
     setClicked(true);
+    let start = performance.now();
     binarySearch(sort, search);
-    setResults(`${search} was found at index ${indexFound}`);
+    let end = performance.now();
+    let time = end - start;
+    setResults(
+      `${search} was found at index ${indexFound}. Time in milliseconds ${time}`
+    );
   };
 
   const codeSnippet = (

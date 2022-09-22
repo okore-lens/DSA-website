@@ -7,6 +7,7 @@ const Linear = (props) => {
   const [search, setSearch] = useState(1);
   const [results, setResults] = useState("Search a number in an array");
   const [clicked, setClicked] = useState(false);
+  // const []
 
   useEffect(() => {
     setInputs(props.array);
@@ -39,8 +40,15 @@ const Linear = (props) => {
   const searchHandler = (e) => {
     e.preventDefault();
     setClicked(true);
+    let start = performance.now();
+    console.log(start);
     linearSearch(splited, search);
-    setResults(`${search} was found at indexes ${same}`);
+    let end = performance.now();
+    console.log(end);
+    let time = end - start;
+    setResults(
+      `${search} was found at indexes ${same}. Time in milliseconds ${time}`
+    );
   };
 
   const codeSnippet = (
