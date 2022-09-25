@@ -21,21 +21,23 @@ const Quick = (props) => {
     arr[y] = temp;
   };
 
+  let sorted = [];
+
   const partitioner = (arr, start = 0, end = arr.length + 1) => {
     let pivot = arr[start];
     let swapIdx = start;
 
     for (let i = start + 1; i < arr.length; i++) {
-      console.log(arr, "before");
+      //   console.log(arr, "before");
       if (pivot > arr[i]) {
         swapIdx++;
         swap(arr, swapIdx, i);
-        console.log(arr, "inside");
+        // console.log(arr, "inside");
       }
-      console.log(arr, "after");
+      //   console.log(arr, "after");
     }
     swap(arr, start, swapIdx);
-    console.log(arr, "final");
+    // console.log(arr, "final");
     return swapIdx;
   };
 
@@ -47,16 +49,69 @@ const Quick = (props) => {
       // right
       quickSort(arr, pivotIdx + 1, right);
     }
-    setResults(arr + "");
+    return (sorted = arr);
   };
 
   const sortHandler = () => {
     setClicked(true);
-
+    const start = performance.now();
     quickSort(numbers);
+    const end = performance.now();
+    const time = end - start;
+    console.log(sorted, time);
+    setResults(`${sorted + ""} :: Time taken is ${time}`);
   };
 
-  const codeSnippet = <div className="code-snippet">Code Snippet</div>;
+  const codeSnippet = (
+    <div className="code-snippet">
+      <pre>
+        <code>{`
+      const swap = (arr, x, y) => {
+        let temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+      };
+    
+      const partitioner = (arr, start = 0, end = arr.length + 1) => {
+        let pivot = arr[start];
+        let swapIdx = start;
+    
+        for (let i = start + 1; i < arr.length; i++) {
+          console.log(arr, "before");
+          if (pivot > arr[i]) {
+            swapIdx++;
+            swap(arr, swapIdx, i);
+            console.log(arr, "inside");
+          }
+          console.log(arr, "after");
+        }
+        swap(arr, start, swapIdx);
+        console.log(arr, "final");
+        return swapIdx;
+      };
+    
+      const quickSort = (arr, left = 0, right = arr.length - 1) => {
+        if (left < right) {
+          let pivotIdx = partitioner(arr, left, right);
+          // left
+          quickSort(arr, left, pivotIdx - 1);
+          // right
+          quickSort(arr, pivotIdx + 1, right);
+        }
+        return arr;
+      };
+
+      const arr = [4,3,5,1,7,8,2,9,11]
+      const start = perfomance.now()
+      quickSort(arr);
+      const end = perfomance.now()
+      const time = end -start
+      console.log("Sorted array:",arr,"Time taken",time)
+    
+    `}</code>
+      </pre>
+    </div>
+  );
   return (
     <div className="quick">
       <h3>Quick Sort</h3>
