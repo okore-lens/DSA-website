@@ -17,6 +17,7 @@ const Sorting = () => {
         <Link to="bubble">Bubble Sort</Link>
         <Link to="selection">Selection Sort</Link>
         <Link to="insertion">Insertion Sort</Link>
+        <Link to="quick">Quick Sort</Link>
       </nav>
       <div className="types">
         <Outlet />

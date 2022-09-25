@@ -14,6 +14,7 @@ import Searching from "./components/searching/Searching";
 import Bubble from "./components/sorting/sortItems/bubble/Bubble";
 import Selection from "./components/sorting/sortItems/selection/Selection";
 import Insertion from "./components/sorting/sortItems/insertion/Insertion";
+import Quick from "./components/sorting/sortItems/quick/Quick";
 
 function App() {
   const [inputs, setInputs] = useState([]);
@@ -53,6 +54,7 @@ function App() {
             <Route path="bubble" element={<Bubble array={inputs} />} />
             <Route path="selection" element={<Selection array={inputs} />} />
             <Route path="insertion" element={<Insertion array={inputs} />} />
+            <Route path="quick" element={<Quick array={inputs} />} />
           </Route>
         </Routes>
       </div>
