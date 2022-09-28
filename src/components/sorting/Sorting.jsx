@@ -18,6 +18,7 @@ const Sorting = () => {
         <Link to="selection">Selection Sort</Link>
         <Link to="insertion">Insertion Sort</Link>
         <Link to="quick">Quick Sort</Link>
+        <Link to="merge">Merge Sort</Link>
       </nav>
       <div className="types">
         <Outlet />
