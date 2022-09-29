@@ -18,8 +18,8 @@ function Merge(props) {
   const mergeHandler = (a, b) => {
     let i = 0;
     let j = 0;
+
     while (i < a.length) {
-      console.log(a[i], b[j]);
       if (j !== b.length) {
         for (j; j < b.length; j++) {
           if (a[i] > b[j]) {
@@ -30,10 +30,17 @@ function Merge(props) {
         }
       } else {
         mergedArray.push(a[i]);
-        console.log("Hey hey");
       }
       console.log(mergedArray);
       i++;
+      console.log(i, a.length);
+      if (i === a.length) {
+        console.log(j);
+        for (j; j < b.length; j++) {
+          mergedArray.push(b[j]);
+          console.log("Pushed", b[j]);
+        }
+      }
     }
   };
 
