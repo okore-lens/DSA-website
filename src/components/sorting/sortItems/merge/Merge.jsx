@@ -18,6 +18,13 @@ function Merge(props) {
 
   const numbers = splited.map(Number);
 
+  // Random numbers
+  // const arr = [];
+  // while (arr.length < inputs) {
+  //   const r = Math.floor(Math.random() * 10000) + 1;
+  //   if (arr.indexOf(r) === -1) arr.push(r);
+  // }
+
   const mergeHandler = (arr1, arr2) => {
     const sorted = [];
     let i = 0;
@@ -56,11 +63,17 @@ function Merge(props) {
   };
 
   const sortHandler = () => {
+    const arr = [];
+    while (arr.length < inputs) {
+      const r = Math.floor(Math.random() * 10000) + 1;
+      if (arr.indexOf(r) === -1) arr.push(r);
+    }
+    // console.log(arr);
     const start = performance.now();
-    mergeSort(numbers);
+    mergeSort(arr);
     const end = performance.now();
-    const time = (end - start) / 1000;
-    setResults(`${ordered + ""} :: Time taken is ${time}`);
+    const time = end - start;
+    setResults(`:: Time taken is ${time}`); //${ordered + ""}
     setClicked(true);
   };
 
